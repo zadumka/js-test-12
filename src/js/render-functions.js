@@ -1,9 +1,10 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-const refs = {
+export const refs = {
   galleryContainer: document.querySelector('ul.gallery'),
   loader: document.querySelector('.loader'),
+  loadMoreBtn: document.querySelector('.load-more'),
 };
 
 const modal = new SimpleLightbox('a.gallery-link', {
@@ -59,4 +60,24 @@ export const showLoader = () => {
 
 export const hideLoader = () => {
   refs.loader.classList.remove('show');
+};
+
+export const showLoadMoreButton = () => {
+  refs.loadMoreBtn.classList.add('show');
+};
+
+export const hideLoadMoreButton = () => {
+  refs.loadMoreBtn.classList.remove('show');
+};
+
+export const scroll = () => {
+  const imageRef = refs.galleryContainer.firstChild;
+  if (!imageRef) return;
+
+  const { height } = imageRef.getBoundingClientRect();
+
+  window.scrollBy({
+    top: height * 2,
+    behavior: 'smooth',
+  });
 };
