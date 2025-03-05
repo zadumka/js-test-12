@@ -69,15 +69,3 @@ export const showLoadMoreButton = () => {
 export const hideLoadMoreButton = () => {
   refs.loadMoreBtn.classList.remove('show');
 };
-
-export const scroll = () => {
-  const imageRef = refs.galleryContainer.firstChild;
-  if (!imageRef) return;
-
-  const { height } = imageRef.getBoundingClientRect();
-
-  window.scrollBy({
-    top: height * 2,
-    behavior: 'smooth',
-  });
-};
